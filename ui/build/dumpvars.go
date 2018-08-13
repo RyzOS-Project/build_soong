@@ -147,7 +147,10 @@ func dumpMakeVars(ctx Context, config Config, goals, vars []string, write_soong_
 var BannerVars = []string{
 	"PLATFORM_VERSION_CODENAME",
 	"PLATFORM_VERSION",
-	"RYZ_ANDROID",
+	"RYZ_VERSION",
+	"RYZ_MOD_VERSION",
+	"RYZ_VER",
+	"RYZ_MAINTAINER",
 	"PRODUCT_SOURCE_ROOT_DIRS",
 	"TARGET_DEVICE",
 	"TARGET_BUILD_VARIANT",
