@@ -145,26 +145,22 @@ func dumpMakeVars(ctx Context, config Config, goals, vars []string, write_soong_
 
 // Variables to print out in the top banner
 var BannerVars = []string{
-	"PLATFORM_VERSION_CODENAME",
 	"PLATFORM_VERSION",
 	"RYZ_VERSION",
 	"RYZ_MOD_VERSION",
 	"RYZ_VER",
 	"RYZ_MAINTAINER",
+	"BUILD_ID",
+	"PRODUCT_INCLUDE_TAGS",
 	"PRODUCT_SOURCE_ROOT_DIRS",
 	"TARGET_DEVICE",
 	"TARGET_BUILD_VARIANT",
-	"TARGET_BUILD_APPS",
 	"TARGET_BUILD_UNBUNDLED",
 	"TARGET_ARCH",
 	"TARGET_ARCH_VARIANT",
 	"TARGET_CPU_VARIANT",
-	"TARGET_2ND_ARCH",
-	"TARGET_2ND_ARCH_VARIANT",
-	"TARGET_2ND_CPU_VARIANT",
 	"HOST_OS",
-	"BUILD_ID",
-	"OUT_DIR",
+	"SOONG_SDK_SNAPSHOT_PREFER",
 	"SOONG_SDK_SNAPSHOT_TARGET_BUILD_RELEASE",
 	"PRODUCT_IS_ATV",
 	"PRODUCT_IS_AUTOMOTIVE",
@@ -178,13 +174,18 @@ var BannerVars = []string{
 func Banner(make_vars map[string]string) string {
 	b := &bytes.Buffer{}
 
-	fmt.Fprintln(b, "============================================")
+	fmt.Fprintln(b, "================================")
+	fmt.Fprintln(b, " ██████████████████████████████ ")
+	fmt.Fprintln(b, " █▄─▄▄▀█▄─█─▄█░▄▄░▄█─▄▄─█─▄▄▄▄█ ")
+	fmt.Fprintln(b, " ██─▄─▄██▄─▄███▀▄█▀█─██─█▄▄▄▄─█ ")
+	fmt.Fprintln(b, " ▀▄▄▀▄▄▀▀▄▄▄▀▀▄▄▄▄▄▀▄▄▄▄▀▄▄▄▄▄▀ ")
+	fmt.Fprintln(b, "================================")
 	for _, name := range BannerVars {
 		if make_vars[name] != "" {
 			fmt.Fprintf(b, "%s=%s\n", name, make_vars[name])
 		}
 	}
-	fmt.Fprint(b, "============================================")
+	fmt.Fprintln(b, "================================")
 
 	return b.String()
 }
